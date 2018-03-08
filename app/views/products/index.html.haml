@@ -1,0 +1,31 @@
+%h1 Listing products
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th ID
+      %th Url
+      %th Code nr
+      %th Name
+      %th
+      %th
+      %th
+
+  / %tbody
+  /   - @products.each do |product|
+  /     %tr
+  /       %td= product.product_id
+  /       %td= product.url
+  /       %td= product.code_nr
+  /       %td= product.name
+  /       %td= link_to 'Show', product
+  /       %td= link_to 'Edit', edit_product_path(product)
+  /       %td= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }
+  %tbody
+    - @doc.css('o').each do |product|
+      %tr
+        %td= product[:id]
+        %td= product[:url]
+        %td= product.css('a').last.text.strip
+        %td= product.css('name').text
+%br

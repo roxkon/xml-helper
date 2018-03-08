@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Product:
+  = @product.product_id
+%p
+  %b Url:
+  = @product.url
+%p
+  %b Code nr:
+  = @product.code_nr
+%p
+  %b Name:
+  = @product.name
+
+= link_to 'Edit', edit_product_path(@product)
+\|
+= link_to 'Back', products_path
