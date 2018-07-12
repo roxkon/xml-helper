@@ -3,13 +3,20 @@
 %table.table.table-striped
   %thead
     %tr
+      %th Lp
       %th ID
-      %th Url
-      %th Code nr
+      %th Active
       %th Name
-      %th
-      %th
-      %th
+      %th CATEGORIES
+      %th PRICE
+      %th PRICE discount
+      %th QUANTITY
+      %th MINIMAL QUANT.
+      %th SHORT DESC
+      %th DESCRIPTION
+      %th AVAIL FOR ORDERS
+      %th SHOW PRICE (1/0)
+      %th IMAGE URLs (x,y,z...)
 
   / %tbody
   /   - @products.each do |product|
@@ -24,8 +31,23 @@
   %tbody
     - @doc.css('o').each do |product|
       %tr
+        %td= @x+=1
         %td= product[:id]
-        %td= product[:url]
-        %td= product.css('a').last.text.strip
+        %td
+          0
         %td= product.css('name').text
+        %td= product.css('cat').text
+        %td= product[:price]
+        %td= ((product[:price].to_f * @discount)/100).round(-1)
+        %td= product[:stock]
+        %td
+          1
+        %td= product.css('desc').text.first(160)
+        %td= product.css('desc').text
+        %td
+          1
+        %td
+          1
+        %td= product.css('imgs').css('main', 'i').map { |x| x[:url] }
+        / %td= product.css('a').last.text.strip
 %br
