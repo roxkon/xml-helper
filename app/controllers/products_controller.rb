@@ -16,12 +16,12 @@ class ProductsController < ApplicationController
 
   # read the xml 
   def import
-    @x = 0
+    @x = 4000
     # variable discount is needed for proper computing our price
     @discount = 90    
     # url = "https://www.pomocedlaseniora.pl/jscripts/ceneo-generator-meta.php"
     # @doc = Nokogiri::XML(open(url))
-    xml_file = File.read("mediq.xml")
+    xml_file = File.read("mediq_all.xml")
     @doc = Nokogiri::XML.parse(xml_file)
   end
 
